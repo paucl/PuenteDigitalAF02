@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro | Preguntas y Respuestas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./../styles/common-styles.css">
+    <link rel="stylesheet" href="./../styles/forumStyles/forum-styles.css">
+    <link rel="stylesheet" href="./../styles/forumStyles/forumModal-styles.css">
+    <link rel="stylesheet" href="./../styles/forumStyles/forumReply-styles.css">
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./../scripts/forumThread.js" defer></script>
+    <link rel="stylesheet" href="./../styles/icon-styles.css">
+    <script src="./../scripts/alert.js"></script>
+    <script src="./../scripts/fade-nav.js"></script>
+</head>
+
+<body>
+    <header class="db-header">
+        <nav class="db-header__nav">
+            <div class="db-header__logo">
+                <ul class="db-header__menu ms-auto">
+                    <a href="./../index.html" class="db-header__menu-link logo-header"><img src="./../images/logoDB.png"></a>
+                </ul>
+            </div>
+            <div class="db-header__dropdown">
+                <div class="db-header__contact">
+                    <ul class="db-header__menu">
+                        <a href="https://paucl.github.io/DigitalBridge/">
+                            <li class="db-header__menu-link"><div class="menu-link">Sobre Nosotros<span class="material-symbols-outlined">emoji_people</span></div></li>
+                        </a>
+                        <a href="./../forum/forum.html">
+                            <li class="db-header__menu-link"><div class="menu-link">Foro<span class="material-symbols-outlined">help</span></div></li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="db-header__login">
+                    <ul class="db-header__menu">
+                        <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Iniciar Sesión <span class="material-symbols-outlined">login</span></div></li>
+                        <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Registrarse <span class="material-symbols-outlined">person</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <button class="db-header__hamburger" aria-label="Open menu" onclick="this.parentElement.classList.toggle('active')">
+            <span class="db-header__hamburger-line"></span>
+            <span class="db-header__hamburger-line"></span>
+            <span class="db-header__hamburger-line"></span>
+        </button>
+    </header>
+
+    <main id="forumThread" class="container-fluid">
+        <div class="hero-container text-center">
+            <h1 class="hero-title">Comunidad de Aprendizaje Interactivo </span></h1>
+            <p class="hero-subtitle"> Preguntas y Respuestas para Curiosos de Toda Edad</p>
+        </div>
+
+        <div class="row container-body">
+            <div id="forum-top-bar" class="row align-items-center mb-3 gx-2">
+                <!-- Category Selection Filtering -->
+                <div class="col">
+                    <select class="form-select" v-model="selectedCategory">
+                        <option value="">Todas las categorías</option>
+                        <option value="Informática Básica">Informática básica</option>
+                        <option value="Internet y Redes Sociales">Internet y redes sociales</option>
+                        <option value="Dispositivos Móviles">Dispositivos móviles</option>
+                        <option value="Comunicación Digital">Comunicación digital</option>
+                        <option value="Herramientas de Productividad">Herramientas de productividad</option>
+                        <option value="Seguridad en Línea">Seguridad en línea</option>
+
+                    </select>
+                </div>
+                <!-- Search Bar -->
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Busca alguna pregunta"
+                            @input="searchThreads">
+                        <button class="btn btn-outline-secondary" type="button" v-on:click="search">Buscar</button>
+                    </div>
+                </div>
+                <!-- Add New Thread Button -->
+                <div class="col-auto">
+                    <button class="btn btn-primary" @click="openThreadForm">Nueva Discusión</button>
+                </div>
+            </div>
+
+
+            <!-- Thread Creation Form Modal -->
+            <template class="modal" v-show="showThreadForm">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Hacer nueva pregunta</h5>
+                            <button type="button" class="btn-close" aria-label="Close"
+                                @click="closeThreadForm"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form @submit.prevent="addNewThread">
+                                <div class="mb-3">
+                                    <label for="newThreadTitle" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="newThreadAuthorName"
+                                        v-model="newThread.author" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newThreadTitle" class="form-label">Título</label>
+                                    <input type="text" class="form-control" id="newThreadTitle"
+                                        v-model="newThread.title" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newThreadCategory" class="form-label">Categoría</label>
+                                    <select class="form-select" id="newThreadCategory" v-model="newThread.category"
+                                        required>
+                                        <option value="">Seleccione una categoría</option>
+                                        <option value="Informática Básica">Informática básica</option>
+                                        <option value="Internet y Redes Sociales">Internet y redes sociales</option>
+                                        <option value="Dispositivos Móviles">Dispositivos móviles</option>
+                                        <option value="Comunicación Digital">Comunicación digital</option>
+                                        <option value="Herramientas de Productividad">Herramientas de productividad
+                                        </option>
+                                        <option value="Seguridad en Línea">Seguridad en línea</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newThreadText" class="form-label">Pregunta</label>
+                                    <textarea class="form-control" id="newThreadText" v-model="newThread.text" rows="3"
+                                        required></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        @click="closeThreadForm">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Publicar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Threads List -->
+            <div class="threads">
+                <article class="thread-item" v-for="thread in filteredThreads" :key="thread.id">
+                    <div class="thread-heading">
+                        <h2>{{ thread.title }}</h2>
+                        <div class="row align-items-start">
+                            <div class="col-auto">
+                                <img :src="thread.authorPic" alt="Profile picture" class="rounded-circle me-2"
+                                    width="40">
+                            </div>
+                            <div class="col">
+                                <div class="author-name">{{ thread.author }}</div>
+                                <time class="time-ago" :datetime="thread.time">{{ thread.timeAgo }}</time>
+                            </div>
+                            <div class="col-auto">
+                                <span class="thread-category badge">{{ thread.category }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thread-body">
+                        <p class="thread-content">{{ thread.text }}</p>
+                    </div>
+                    <div class="thread-footer">
+                        <button class="btn btn-secondary" @click="openReplyForm(thread)">Responder</button>
+                        <div class="reply-form" v-if="thread.showReplyForm">
+                            <form @submit.prevent="submitReply">
+                                <input type="text" v-model="newResponse.author" placeholder="Tu Nombre"
+                                    class="form-control" required>
+                                <textarea v-model="newResponse.text" placeholder="Tu Respuesta" class="form-control"
+                                    required></textarea>
+                                <button type="submit" class="btn btn-primary">Publicar</button>
+                                <button @click="closeReplyForm" class="btn btn-secondary">Cancelar</button>
+                            </form>
+                        </div>
+                        <div v-for="response in thread.responses" class="reply-body">
+                            <div class="reply"><strong>{{ response.author }}:</strong> {{ response.text }} </div>
+                            <br><small>{{ new Date(response.time).toLocaleString() }}</small>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Copyright &copy; FHiC 23-24 - Puente Digital
+    </footer>
+
+    <!-- Scripts needed -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
