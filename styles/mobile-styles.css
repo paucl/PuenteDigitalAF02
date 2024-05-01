@@ -1,0 +1,11 @@
+.mobile-container{
+    background: linear-gradient( rgba(0, 0, 0, 0.7) 100%, rgba(0, 0, 0, 0.5)100%),url("./../images/basic-use-smartphone.jpg");
+}
+
+.computer-container{
+    background: linear-gradient( rgba(0, 0, 0, 0.7) 100%, rgba(0, 0, 0, 0.5)100%),url("./../images/apps.jpg");
+}
+
+.mobile-subtitle{
+    margin: 0 150px;
+}

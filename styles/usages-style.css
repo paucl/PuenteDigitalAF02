@@ -1,0 +1,53 @@
+.usage-icon{
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 160px;
+    height: 160px;
+    border-radius: 38px;
+    justify-content: center;
+    align-items: center;
+}
+
+.usage-name{
+    margin: 10px 10px 5px 10px;
+    margin-left: 25px;
+    margin-top: 108px;
+    color: var(--color-primary-1);
+    font-family: 'M Plus Rounded 1c';
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.usage-item{
+    display: flex;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    box-shadow: 3px 2px 7px;
+    transition: 1s;
+}
+
+.usage-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.usage-item:hover{
+    transition: 1s;
+    background: linear-gradient( var(--color-primary-1), var(--color-primary-4));
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px var(--color-primary-1);
+    
+    
+}
+
+.usage-item:hover > .usage-name{
+    color: white;
+}
+
