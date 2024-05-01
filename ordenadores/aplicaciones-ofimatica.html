@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones móviles</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../styles/services-style.css">
+    <link rel="stylesheet" href="./../styles/common-styles.css">
+    <link rel="stylesheet" href="./../styles/icon-styles.css">
+    <script src="./../scripts/fade-nav.js"></script>
+    <script src="./../scripts/alert.js"></script>
+</head>
+<body>
+    <header class="db-header">
+        <nav class="db-header__nav">
+            <div class="db-header__logo">
+                <ul class="db-header__menu ms-auto">
+                    <a href="./../index.html" class="db-header__menu-link logo-header"><img src="./../images/logoDB.png"></a>
+                </ul>
+            </div>
+            <div class="db-header__dropdown">
+                <div class="db-header__contact">
+                    <ul class="db-header__menu">
+                        <a href="https://paucl.github.io/DigitalBridge/">
+                            <li class="db-header__menu-link"><div class="menu-link">Sobre Nosotros<span class="material-symbols-outlined">emoji_people</span></div></li>
+                        </a>
+                        <a href="./../forum/forum.html">
+                            <li class="db-header__menu-link"><div class="menu-link">Foro<span class="material-symbols-outlined">help</span></div></li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="db-header__login">
+                    <ul class="db-header__menu">
+                        <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Iniciar Sesión <span class="material-symbols-outlined">login</span></div></li>
+                        <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Registrarse <span class="material-symbols-outlined">person</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <button class="db-header__hamburger" aria-label="Open menu" onclick="this.parentElement.classList.toggle('active')">
+            <span class="db-header__hamburger-line"></span>
+            <span class="db-header__hamburger-line"></span>
+            <span class="db-header__hamburger-line"></span>
+        </button>
+    </header>
+    <main>
+        <!--Hero container-->
+        <div class="hero-container text-center">
+            <h1 class="hero-title">Programas</span></h1>
+            <p class ="hero-subtitle mobile-subtitle">
+                A continuación puedes encontrar un listado de aplicaciones disponibles para aprender separadas en las diferentes categorias. Haz click en la aplicación que desees para empezar.
+            </p>
+        </div>
+
+        <div class="service-section-container row">
+            <div class="service-section">
+                <h2 class="service-section-title">Servicios de Búsqueda</h2>
+                <ol class="services-container row">
+                    <a onclick="mostrarAlerta()" class="service-item"><li"><img src="./../images/googleLogo.png" alt="google-icon" class="service-icon"><span class="service-name">Google</span></li></a>
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/edgeLogo.png" alt="edge-icon" class="service-icon"><span class="service-name">Edge</span></li></a>
+                </ol>
+            </div>
+            <div class="service-section">
+                <h2 class="service-section-title">Servicios de Microsoft</h2>
+                <ol class="services-container row">
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/powerpointLogo.png" alt="powerpoint-icon" class="service-icon"><span class="service-name">PowerPoint</span></li></a>               
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/wordLogo.png" alt="word-icon" class="service-icon"><span class="service-name">Word</span></li></a>  
+                    <a href="./programas/excel.html" class="service-item"><li><img src="./../images/excelLogo.png" alt="ecel-icon" class="service-icon"><span class="service-name">Excel</span></li></a>  
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/outlookLogo.png" alt="outlook-icon" class="service-icon"><span class="service-name">Outlook</span></li></a>  
+                </ol>
+            </div>
+        </div>
+
+        <div class="service-section-container row">
+            <div class="service-section">
+                <h2 class="service-section-title">Servicios de Documentos y Archivos</h2>
+                <ol class="services-container row">
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/adobeLogo.png" alt="adobe-icon" class="service-icon"><span class="service-name">Adobe</span></li></a>
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/winrarLogo.png" alt="winrar-icon" class="service-icon"><span class="service-name">WinRar</span></li></a>
+                </ol>
+            </div>
+            <div class="service-section">
+                <h2 class="service-section-title">Seguridad y Mantenimiento</h2>
+                <ol class="services-container row">
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/avastLogo.png" alt="avast-icon" class="service-icon"><span class="service-name">Avast</span></li></a>
+                    <a onclick="mostrarAlerta()" class="service-item"><li><img src="./../images/ccleanerLogo.png" alt="ccleaner-icon" class="service-icon"><span class="service-name">CCleaner</span></li></a>
+                </ol>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        Copyright &copy; FHiC 23-24 - Puente Digital
+    </footer>
+</body>
+</html>

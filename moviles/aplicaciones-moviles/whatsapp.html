@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puente Digital - Inicio</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./../../styles/common-styles.css">
+  <link rel="stylesheet" href="./../../styles/apps-style.css">
+  <link rel="stylesheet" href="./../../styles/whatsapp.css">
+  <link rel="stylesheet" href="./../../styles/icon-styles.css">
+  <script src="./../../scripts/fade-nav.js"></script>
+  <script src="./../../scripts/alert.js"></script>
+    
+</head>
+<body>
+  <div id="page-container">
+    <header class="db-header">
+      <nav class="db-header__nav" id="navbar">
+        <div class="db-header__logo">
+          <ul class="db-header__menu ms-auto">
+            <a href="./../../index.html" class="db-header__menu-link logo-header"><img src="./../../images/logoDB.png"></a>
+          </ul>
+        </div>
+        <div class="db-header__dropdown">
+          <div class="db-header__contact">
+            <ul class="db-header__menu">
+              <a href="https://paucl.github.io/DigitalBridge/">
+                <li class="db-header__menu-link"><div class="menu-link">Sobre Nosotros<span class="material-symbols-outlined">emoji_people</span></div></li>
+              </a>
+              <a href="./../../forum/forum.html">
+                <li class="db-header__menu-link"><div class="menu-link">Foro<span class="material-symbols-outlined">help</span></div></li>
+              </a>
+            </ul>
+          </div>
+          <div class="db-header__login">
+            <ul class="db-header__menu">
+              <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Iniciar Sesión <span class="material-symbols-outlined">login</span></div></li>
+              <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Registrarse <span class="material-symbols-outlined">person</span></div></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <button class="db-header__hamburger" aria-label="Open menu" onclick="this.parentElement.classList.toggle('active')">
+        <span class="db-header__hamburger-line"></span>
+        <span class="db-header__hamburger-line"></span>
+        <span class="db-header__hamburger-line"></span>
+      </button>
+    </header>
+    <main>
+      <!--Hero container-->
+      <div class="hero hero-whatsapp text-center">
+          <h1 class="hero-title-app">Whatsapp</h1>
+          <p class ="hero-subtitle">
+              Comunícate con tus amigos y familiares de forma rápida y segura.
+          </p>
+      </div>
+      <div class="container__leftright">
+        <div class="left_drop">
+          <div class="sec-center"> 	
+            <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+            <label class="for-dropdown" for="dropdown">Tutoriales<i class="uil uil-arrow-down"></i></label>
+            <div class="section-dropdown"> 
+              <input class="dropdown-sub" type="checkbox" id="dropdown-sub_1" name="dropdown-sub_1"/>
+              <label class="for-dropdown-sub" :class="{ is_active: activeSubDropdown === 'whatsapp' }" @click="setTeoriaAbrirWhatsapp" id="dropdown_1" for="dropdown-sub_1">Abrir Whatsapp<i class="uil uil-plus"></i></label>
+              <input class="dropdown-sub" type="checkbox" id="dropdown-sub_2" name="dropdown-sub_2"/>
+              <label class="for-dropdown-sub" :class="{ is_active: activeSubDropdown === 'contactos' }" @click="setTeoriaContactos" id="dropdown_2" for="dropdown-sub_2">Interfaz de Contactos<i class="uil uil-plus"></i></label>
+              <input class="dropdown-sub" type="checkbox" id="dropdown-sub_3" name="dropdown-sub_3"/>
+              <label class="for-dropdown-sub" :class="{ is_active: activeSubDropdown === 'mensaje' }" @click="setTeoriaEscribirMensaje" id="dropdown_3"for="dropdown-sub_3">Escribir un mensaje<i class="uil uil-plus"></i></label>
+              <input class="dropdown-sub" type="checkbox" id="dropdown-sub_4" name="dropdown-sub_4"/>
+              <label class="for-dropdown-sub" :class="{ is_active: activeSubDropdown === 'llamadas' }" @click="setTeoriaLlamada" id="dropdown_4" for="dropdown-sub_4">Hacer una Llamada y Videollamada<i class="uil uil-plus"></i></label>
+            </div>
+          </div>
+        </div>
+        <div class="right_drop">
+          <div class="card card-1" v-show="currentIndex === 0">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">¡Bienvenido/a al tutorial de como utilizar Whatsapp!</h2>
+            <p class="card__description">
+              <div class="div_text">
+                Este tutorial te enseñará a utiliizar Whatsapp de forma rápida y sencilla.
+                Puedes presionar el botón de abajo para comenzar. ¡Esperamos que te sea de ayuda!
+              </div>
+            </p>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="siguiente">
+                ¡Presióname para empezar!
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 1">
+              <div class="card__icon"><i class="fas fa-bolt"></i></div>
+              <p class="card__exit"><i class="fas fa-times"></i></p>
+              <h2 class="card__title">Paso 1: Abrir Whatsapp</h2>
+              <p class="card__description">
+                <div class="div_text">
+                  Para poder abrir Whatsapp, debes buscar el icono de Whatsapp en tu teléfono y presionarlo. A continuación se muestra una imagen de cómo se ve el icono de Whatsapp.
+                </div>
+              </p>
+              <img src="./../../images/icono_whpp_card1.jpg" alt="Icono de Whatsapp" class="card__image">
+              <p class="card__apply">
+                <button class="cssbuttons-io-button" @click="siguiente">
+                  ¡Púlsame para ponerte a prueba!
+                  <div class="icon">
+                    <svg
+                      height="24"
+                      width="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </button>
+              </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 2">
+              <div class="card__icon"><i class="fas fa-bolt"></i></div>
+              <p class="card__exit"><i class="fas fa-times"></i></p>
+              <h2 class="card__title">Prueba 1: Abrir Whatsapp</h2>
+              <p class="card__description">
+                ¿Qué debes hacer para abrir Whatsapp?
+              </p>
+              <form>
+                <label class="respuesta__st" v-for="(respuesta, index) in preguntas[0].respuestas" :key="index" class="card__apply">
+                  <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestaSeleccionada">
+                  <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+                </label>
+              </form>
+              <p class="card__apply">
+                <button class="cssbuttons-io-button" @click="verificarRespuesta">
+                  Si me presionas sabrás si tu respuesta es correcta...
+                  <div class="icon">
+                    <svg
+                      height="24"
+                      width="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </button>
+              </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 3">
+              <div class="card__icon"><i class="fas fa-bolt"></i></div>
+              <p class="card__exit"><i class="fas fa-times"></i></p>
+              <h2 class="card__title">¡Correcto!</h2>
+              <p class="card__description">
+                Esto solo ha sido para calentar motores. Ahora vamos a lo importante.
+              </p>
+              <p class="card__apply">
+                <button class="cssbuttons-io-button" @click="siguiente">
+                  ¡Adelante!
+                  <div class="icon">
+                    <svg
+                      height="24"
+                      width="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </button>
+              </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 4">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">Paso 2: Como funciona la Interfaz de Contactos</h2>
+            <p class="card__description">
+              <div class="div_text">
+                Ya tenemos Whatsapp abierto, ahora vamos a ver cómo funciona la interfaz de contactos.
+                En la parte inferior de la pantalla, verás tres pestañas: Chats, Estados y Llamadas.
+              </div>
+              <br>
+              <strong class="div__title">Chats:</strong>
+              <br>
+              <div class="div_text">                       
+                Aquí podrás ver tus conversaciones.
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/wh_interface.jpg" alt="Chats de Whatsapp" class="card__image_int">
+              <br>
+              <div class="div_text">
+                La primera vez que entres a Whatsapp, verás una pantalla como la de la imagen.
+                Como puedes ver, estan las personas listadas de los contactos que tienes guardados en tu teléfono.
+                Cada persona listada se le llama "contacto".
+                En caso de que no le salga la lista de contactos, puede buscar el botón de "Chats" en la parte inferior de la pantalla. 
+                Presiona sobre el botón de "Chats", que esta señalado con una flecha verde en la imagen de a continuación:
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/wh_interface_chats.jpg" alt="Chats de Whatsapp" class="card__image_int">
+              <br>
+              <div class="div_text">
+                La información que puedes ver en pantalla es la siguiente:  
+              </div>                    
+              <br>
+              <div class="div_text">
+                La flecha verde señala un nombre. Este nombre es el nombre del contacto de esta persona.
+                Si te aparece con nombre, significa que lo has añadido a tus contactos, si no te aparecerá
+                con el número de teléfono asociado a ese contacto, como se puede ver en la flecha azul.
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/wh_interface_chats_explntn.jpg" alt="Chats de Whatsapp" class="card__image_int">
+              <div class="div_text">
+                Además de los nombres, puedes ver como la flecha amarilla señala la última vez que has hablado con ese contacto.
+                Si es un contacto nuevo, te aparecerá sin fecha. Si nos fijamos al lado del nombre, podemos ver una foto de perfil:
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/icono_wh_with_pfp.jpg" alt="Image With PFP" class="card__image_int">
+              <div class="div_text">
+                Si el contacto tiene foto de perfil, te aparecerá con la foto de perfil que ha puesto.
+                <br>
+                <br>
+                Si el contacto no tiene foto de perfil, te aparecerá con un icono predefinido:
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/icono_wh_no_pfp.jpg" alt="Image Without PFP" class="card__image_int">
+              <div class="div_text">
+                Ya que lo hemos entendido todo, ¡pongámonos a prueba!
+              </div>
+            </p>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="sum3Siguiente">
+                ¡Presióname para empezar!
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex >= 5 && currentIndex <= 7">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">{{ preguntas[currentPreguntasIndex].titulo }}</h2>
+            <p class="card__description">
+              {{ preguntas[currentPreguntasIndex].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[1].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[0]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[2].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[2].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[1]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[3].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[3].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[2]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="verificarRespuestasP2">
+                Si me presionas sabrás si tu respuesta es correcta...
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 8">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">¡Bien hecho!</h2>
+            <p class="card__description">
+              Sigamos con el tutorial.
+            </p>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="siguiente">
+                ¡Adelante!
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 9">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">Paso 3: Cómo escribir un mensaje</h2>
+            <p class="card__description">
+              Ahora que sabemos cómo funciona la interfaz de contactos, vamos a ver cómo escribir un mensaje.
+              <br>
+              <br>
+              <strong class="div__title">1. Selecciona un contacto:</strong> 
+              <br>
+              <br>
+              Para escribir un mensaje, primero debes seleccionar un contacto, de todos los que tienes guardados en tu teléfono.
+              <br>
+              Nosotros vamos a seleccionar a "Hugo", como se muestra en la imagen de a continuación:
+              <br>
+              <br>
+              <img src="./../../images/wh_interface_press_hugo.jpg" alt="Chats de Whatsapp" class="card__image_int"> 
+              <br>
+              <strong class="div__title">2. Escribe tu mensaje:</strong> 
+              <br>
+              <br>
+              Una vez seleccionado el contacto, nos encontraremos con el chat de la persona seleccionada.
+              Al principio, el chat estará vacío. Cuando escribas un mensaje, se verá como en la imagen de a continuación:
+              <br>
+              <br>
+              <img src="./../../images/icon_wh_escribir_general.png" alt="Chats de Whatsapp" class="card__image_int">
+              <br>
+              Como puedes observar, hay una conversación con Hugo. Si nos fijamos en la imagen que mostramos a continuación, vemos como la flecha amarilla
+              indica el nombre del contacto con quien estamos hablando. La flecha morada señala al mensaje que has enviado. Como se puede observar, el mensaje esta
+              recubierto por un globo de color verde, que es el color que se le asigna a los mensajes enviados por ti.
+
+              <br>
+              <br>
+
+              Por otra parte, la flecha roja señala el mensaje que ha enviado Hugo. Como puedes ver, el mensaje esta recubierto por un globo de otro color diferente al verde, que es el color que se le asigna a los mensajes enviados por la otra persona.
+              Entonces, para diferenciar los mensajes enviados por ti y los mensajes enviados por la otra persona, se asignan colores diferentes a los globos de los mensajes. No solo eso, también se pueden diferenciar por la posición en la que estan.
+              Los mensajes de la persona con la que estás hablando, estarán a la izquierda de la pantalla, mientras que los mensajes que has enviado estarán a la derecha de la pantalla.
+
+              <br>
+              <br>
+
+              Dentro de los globos de los mensajes, se puede ver el texto que se ha escrito. Abajo a la derecha del globo, se puede ver la hora en la que se ha enviado el mensaje.
+              Y al lado de la hora, unos ticks ✔✔. Que representan lo siguiente:
+              <br>
+              <br>
+              <ul class="bullet__ticks">
+                  <li class="bullet__ticks_line">1 tick: El mensaje ha sido enviado pero no ha sido recibido.</li>
+                  <li class="bullet__ticks_line">2 ticks: El mensaje ha sido enviado y recibido.</li>
+                  <li class="bullet__ticks_line">2 ticks azules: El mensaje ha sido enviado, recibido y leído.</li>
+              </ul>
+              <br>
+              <img src="./../../images/icon_wh_escribir_explicar_int.png" alt="Chats de Whatsapp" class="card__image_int">
+              <br>
+              <strong class="div__title">3. Enviar mensaje:</strong>
+              <br>
+              <div class="div_text"> 
+                Debajo de todos los mensajes que has enviado, verás un cuadro de texto. En este cuadro de texto, puedes escribir tu mensaje:
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/icon_wh_escribir_writebox.png" alt="Chats de Whatsapp" class="card__image_int">
+              <br>
+              <div class="div_text"> 
+                Al presionar sobre el cuadro de texto, se abrirá el teclado de tu teléfono. Si pulsas una letra del teclado se escribirá en el cuadro de texto.
+                Una vez que hayas escrito tu mensaje, presiona el botón de enviar, que se encuentra a la derecha del cuadro de texto, representado por una flecha.
+              </div>
+              <br>
+              <br>
+              <img src="./../../images/icon_wh_escribir_keyboard.png" alt="Chats de Whatsapp" class="card__image_int">
+              <div class="div_text">
+                Ya hemos acabado con este paso. ¡Vamos a la siguiente prueba!
+              </div>
+            </p>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="sum3Siguiente">
+                ¡Ponte a prueba!
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex >= 10 && currentIndex <= 12">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">{{ preguntas[currentPreguntasIndex].titulo }}</h2>
+            <p class="card__description">
+              {{ preguntas[4].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[4].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[0]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[5].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[5].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[1]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[6].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[6].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[2]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[7].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[7].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[3]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="verificarRespuestasP3">
+                Si me presionas sabrás si tu respuesta es correcta...
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex === 13">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">Paso 4: Cómo hacer una llamada y videollamada</h2>
+            <p class="card__description">
+              <div class="div_text">
+                Ahora que sabemos cómo escribir un mensaje, vamos a ver cómo hacer una llamada y videollamada.
+                <br>
+                <br>
+                <strong class="div__title">1. Hacer una llamada:</strong>
+                <br>
+                <br>
+                Para hacer una llamada, primero debes seleccionar un contacto, de todos los que tienes guardados en tu teléfono.
+                Una vez seleccionado el contacto, nos encontraremos con el chat de la persona seleccionada. Si nos fijamos en la parte
+                superior derecha de la pantalla, veremos un iconos de llamadas, como se muestra en la imagen de a continuación:
+                <br>
+                <br>
+                <img src="./../../images/icon_wh_call.png" alt="Chats de Whatsapp" class="card__image_int">
+                Las dos flechas naranjas indican los iconos para hacer las llamadas. El icono de la izquierda representa la videollamada y el icono de la derecha representa la llamada de voz.
+                La videollamada es una llamada en la que puedes ver a la persona con la que estás hablando. La llamada de voz es una llamada en la que solo puedes escuchar a la persona con la que estás hablando.
+                <br>
+                <br>
+                Una vez hayas presionado a unos de los botones, la interfaz de la llamada será como la de la imagen de a continuación:
+                <br>
+                <br>
+                <img src="./../../images/icon_wh_call_int.jpg" alt="Chats de Whatsapp" class="card__image_int">
+                Como se puede observar, en la interfaz de la llamada aparece la foto de perfil de la persona con la que estás hablando, el nombre de la persona con la que estás hablando, el tiempo que llevas hablando y el número
+                de la persona con la que estás hablando. Además, en la parte inferior de la pantalla, verás unos botones que te permiten silenciar el micrófono, colgar la llamada y activar o desactivar la cámara.
+                <br>
+                <br>
+                En la siguiente imagen puedes ver el botón de silenciar el micrófono, que le señala la flecha naranja, te permite que la otra persona no te escuche.
+                El botón de colgar la llamada, que se representa como un boton rojo y señalado por la flecha morada, te permite finalizar la llamada. Por último, el botón de activar o desactivar la cámara te permite que la otra persona te vea o no, representado por la flecha verde.
+                <br>
+                <br>
+                <img src="./../../images/icon_wh_call_int_red.jpg" alt="Chats de Whatsapp" class="card__image_int">
+                Ya que hemos entendido como hacer una videollamada y una llamada de voz, vamos a ponernos a prueba.
+              </div>
+            </p>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="sum3Siguiente">
+                ¡Ponte a prueba!
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card card-1" v-show="currentIndex >= 14 && currentIndex <= 16">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <p class="card__exit"><i class="fas fa-times"></i></p>
+            <h2 class="card__title">{{ preguntas[8].titulo }}</h2>
+            <p class="card__description">
+              {{ preguntas[8].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[8].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[0]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[9].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[9].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[1]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <br>
+            <p class="card__description">
+              {{ preguntas[10].descripcion }}
+            </p>
+            <form>
+              <label class="respuesta__st" v-for="(respuesta, index) in preguntas[10].respuestas" :key="index" class="card__apply">
+                <input class="input__st" type="radio" :id="'respuesta' + index" :value="respuesta" v-model="respuestasSeleccionadas[2]" :name="'respuesta' + currentPreguntasIndex">
+                <span class="span__st" :for="'respuesta' + index">{{ respuesta }}</span>
+              </label>
+            </form>
+            <p class="card__apply">
+              <button class="cssbuttons-io-button" @click="verificarRespuestasP4">
+                Si me presionas sabrás si tu respuesta es correcta...
+                <div class="icon">
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </p>
+          </div>
+          <div class="card_cong" v-show="currentIndex === 17">
+            <div class="ilustration_cong">
+              <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_LrcfNr.json" background="white" speed="1" loop autoplay></lottie-player>
+            </div>
+            <h3 class="h3_cong">¡Felicidades!</h3>
+            <p class="p_cong">Has acabado todo el tutorial. ¡Esperamos que te haya gustado!</p>
+            <button class="button_cong"  @click="resetIndex">Volver al inicio</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+        Copyright &copy; FHiC 23-24 - Puente Digital
+    </footer>
+    <script src="./../../scripts/change-card.js"></script>
+  </div>
+</body>
+</html>

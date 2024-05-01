@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../../styles/common-styles.css">
+    <link rel="stylesheet" href="./../../styles/apps-style.css">
+    <link rel="stylesheet" href="./../../styles/excel-style.css">
+    <script src="./../../scripts/excel-tabs.js"></script>
+    <link rel="stylesheet" href="./../../styles/icon-styles.css">
+    <script src="./../../scripts/fade-nav.js"></script>
+    <script src="./../../scripts/alert.js"></script>
+</head>
+<body>
+    <header class="db-header">
+        <nav class="db-header__nav">
+            <div class="db-header__logo">
+                <ul class="db-header__menu ms-auto">
+                    <a href="./../../index.html" class="db-header__menu-link logo-header"><img src="./../../images/logoDB.png"></a>
+                </ul>
+            </div>
+            <div class="db-header__dropdown">
+                <div class="db-header__contact">
+                    <ul class="db-header__menu">
+                        <a href="https://paucl.github.io/DigitalBridge/">
+                            <li class="db-header__menu-link"><div class="menu-link">Sobre Nosotros<span class="material-symbols-outlined">emoji_people</span></div></li>
+                        </a>
+                        <a href="./../../forum/forum.html">
+                            <li class="db-header__menu-link"><div class="menu-link">Foro<span class="material-symbols-outlined">help</span></div></li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="db-header__login">
+                    <ul class="db-header__menu">
+                        <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Iniciar Sesión <span class="material-symbols-outlined">login</span></div></li>
+                        <li class="db-header__menu-link" onclick="mostrarAlerta()"><div class="menu-link">Registrarse <span class="material-symbols-outlined">person</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <button class="db-header__hamburger" aria-label="Open menu" onclick="this.parentElement.classList.toggle('active')">
+            <span class="db-header__hamburger-line"></span>
+            <span class="db-header__hamburger-line"></span>
+            <span class="db-header__hamburger-line"></span>
+        </button>
+    </header>
+    <main>
+        <div class="tabs">
+            <h1 class="excel-main-title">Microsoft Excel</h1>
+            <label class="extra-label"></label>
+            <!--First section-->
+            <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
+            <label for="tab1" class="tabs__label">Introducción</label>
+            <div class="tabs__content">
+                <section class="excel-section">
+                    <h2>Introducción a Excel</h2>
+                    <p>¡Te damos la bienvenida a nuestra guía introductoria de Excel! 
+                        Nuestro objetivo es proporcionarte la orientación y la ayuda que necesitas para comenzar con confianza y dominar los conceptos básicos. 
+                        Prepárate para desbloquear el potencial de tus datos y llevar tus habilidades de cálculo al siguiente nivel.</p>
+                    <h3>Qué es Excel y para qué se utiliza?</h3>
+                        <p>Excel es un programa de hojas de cálculo usado para organizar y analizar datos. Con él, puedes realizar cálculos, crear gráficos y realizar 
+                        análisis de datos. Es una herramienta fundamental para trabajar con información numérica de manera eficiente. Con Excel podrás realizar:</p>
+                        
+                        <ul>
+                            <li>Gestión de Finanzas Personales</li>
+                            <li>Análisis de Datos Empresariales</li>
+                            <li>Planificación de Proyectos</li>
+                            <li>Estadísticas y Análisis Académico</li>
+                            <li>Gestión de Recursos Humanos</li>
+                            <li>Creación de Informes y Dashboards</li>
+                            <li>Análisis de Datos Científicos</li>
+                            <li>Seguimiento de Inventario y Logística</li>
+                            <li>Muchas más cosas!</li>
+                        </ul>
+                        
+                    <h3>Cómo abrir Excel y crear una nueva hoja de cálculo.</h3>
+                        <ul class="steps">
+                            <li>
+                                En sistemas Windows, puedes abrir Excel desde el menú de inicio, haciendo clic en el ícono de Excel de la lista de tareas 
+                                o buscándolo en el menú de búsqueda. En macOS, puedes abrir Excel desde la carpeta de Aplicaciones o desde el Dock. 
+                                <a href="#open-excel"><span>(ver imágenes)</span></a>
+                                
+                                <div>
+                                    <div id="open-excel" class="image-container">
+                                        <h4>Windows</h4>
+                                        <img class="excel-image" src="./../../images/open-excel-windows.png" alt="open-excel-windows">
+                                    </div>
+                                    <div class="image-container">
+                                        <h4>macOS</h4>
+                                        <img class="excel-image" src="./../../images/open-excel-macos.png" alt="open-excel-macos">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                Una vez abierto el programa Excel verás una barra lateral en la que podras pulsar en Inicio o en Nuevo 
+                                para seguidamente hacer click en Libro en blanco y así crear una nueva hoja de cálculo.
+                                <a href="#create-sheet"><span>(ver imágenes)</span></a>
+                                
+                                <div>
+                                    <div id="create-sheet" class="image-container">
+                                        <h4>Crear hoja de cálculo desde Home</h4>
+                                        <img class="excel-image" src="./../../images/create-sheet-from-home-excel.png" alt="create-sheet-from-home">
+                                    </div>
+                                    <div class="image-container">
+                                        <h4>Crear hoja de cálculo desde Nuevo</h4>
+                                        <img class="excel-image" src="./../../images/create-sheet-excel.png" alt="create-sheet-from-new">
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                Si has seguido los pasos anteriores se abrira una nuevo documento Excel i verás algo similar a esto:
+                                <a href="#main-sheet"><span>(ver imágen)</span></a>
+                                <img id="main-sheet" class="excel-image main-sheet-image menu-image" src="./../../images/main-sheet.png" alt="main-sheet">
+                            </li>
+                            <div class="next-tab__container">
+                                <button class="next-tab" onclick="activarRadio('tab2')">Siguiente sección (Navegación)</button>
+                            </div>
+                        </ul>     
+                </section>
+            </div>
+
+            <!--Second section-->
+            <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
+            <label for="tab2" class="tabs__label">Navegación</label>
+            <div class="tabs__content">
+                <section class="excel-section">
+                    <h2>Navegación por Excel</h2>
+                    <p>
+                        La interfaz de Excel está compuesta por varias partes, cada una con una función específica. Primero veremos qué 
+                        caregorías exisisten y, seguidamente nos enfocaremos en las partes más útiles de la interfaz.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/sections-excel.png" alt="excel-interface">
+                    </div>
+
+                    <h3>Pestaña de Archivo</h3>
+                    <p>
+                        En esta pestaña, puedes realizar acciones relacionadas con el archivo actual, como abrir, guardar, imprimir y compartir. También 
+                        puedes configurar opciones de Excel y administrar cuentas.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/files-excel.png" alt="file-interface">
+                    </div>
+                    
+                    <h3>Pestaña de Inicio</h3>
+                    <p>
+                        Aquí encontrarás herramientas para dar formato a tus datos, como cambiar el tipo de fuente, el tamaño, el color y aplicar estilos a 
+                        celdas. También puedes encontrar opciones para copiar, pegar, ordenar y filtrar datos.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/home-excel.png" alt="home-interface">
+                    </div>
+
+                    <h3>Pestaña de Insertar</h3>
+                    <p>
+                        Esta pestaña te permite agregar diferentes elementos a tu hoja de cálculo, como gráficos, tablas, imágenes, formas y objetos. También 
+                        puedes insertar hipervínculos y comentarios.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/insert-excel.png" alt="insert-interface">
+                    </div>
+
+                    <h3>Pestaña de Disposición de página</h3>
+                    <p>
+                        Aquí puedes ajustar la apariencia de tu hoja de cálculo para la impresión, configurar márgenes, orientación de página, tamaño del papel y 
+                        agregar encabezados y pies de página.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/disposition-excel.png" alt="pagelayout-interface">
+                    </div>
+
+                    <h3>Pestaña de Fórumulas</h3>
+                    <p>
+                        Esta pestaña contiene herramientas para insertar, editar y gestionar fórmulas en tus celdas. También puedes encontrar funciones 
+                        predefinidas y herramientas para auditar fórmulas.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/forms-excel.png" alt="formula-interface">
+                    </div>
+
+                    <h3>Pestaña de Datos</h3>
+                    <p>
+                        Aquí puedes realizar operaciones relacionadas con la importación, exportación y manipulación de datos, como ordenar, filtrar, 
+                        eliminar duplicados y consolidar información.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/data-excel.png" alt="data-interface">
+                    </div>
+
+                    <h3>Pestaña de Revisar</h3>
+                    <p>
+                        Esta pestaña está diseñada para ayudarte a revisar y corregir tu hoja de cálculo. Puedes agregar comentarios, realizar 
+                        seguimiento de cambios, proteger tu hoja y comprobar ortografía.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/review-excel.png" alt="review-interface">
+                    </div>
+
+                    <h3>Pestaña de Vista</h3>
+                    <p>
+                        En esta pestaña, puedes cambiar la forma en que ves tu hoja de cálculo, como cambiar la vista de página, dividir la ventana, 
+                        congelar paneles y ocultar o mostrar elementos de la interfaz.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/view-excel.png" alt="view-interface">
+                    </div>
+
+                    <h3>Pestaña de Automatizar</h3>
+                    <p>
+                        Aquí encontrarás herramientas para automatizar tareas repetitivas mediante macros y scripts. Puedes grabar y ejecutar macros 
+                        para simplificar tu trabajo.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/automatition-excel.png" alt="automate-interface">
+                    </div>
+
+                    <h3>Pestaña de Ayuda</h3>
+                    <p>
+                        Esta pestaña proporciona acceso a la ayuda y recursos de Excel, incluyendo tutoriales, documentación y enlaces a la 
+                        comunidad de usuarios.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/help-excel.png" alt="help-interface">
+                    </div>
+                    <div class="next-tab__container">
+                        <button class="next-tab" onclick="activarRadio('tab3')">Siguiente sección (Fórmulas y operadores)</button>
+                    </div>
+
+                </section>
+            </div>
+
+            <!--Third section-->
+            <input type="radio" class="tabs__radio" name="tabs-example" id="tab3">
+            <label for="tab3" class="tabs__label">Fórmulas y operadores</label>
+            <div class="tabs__content">
+                <section class="excel-section">
+                    <h2>Fórmulas y Funciones Básicas</h2>
+                    <p>
+                        Las fórmulas y funciones son la base de Excel y te permiten realizar cálculos y análisis de datos de manera eficiente. 
+                        A continuación, te presentamos algunas de las fórmulas y funciones más comunes que puedes utilizar en tus hojas de cálculo.
+                    </p>
+
+                    <h3>Cómo escribir una fórmula básica.</h3>
+                    <p>
+                        Para escribir una fórmula en Excel, debes comenzar con el signo igual (=) seguido de la expresión matemática que deseas calcular. 
+                        Por ejemplo, para sumar dos números, puedes escribir =A1+B1, donde A1 y B1 son las celdas que contienen los números que deseas sumar.
+                    </p>
+
+                    <h3>Uso de operadores matemáticos (+, -, *, /).</h3>
+                    <p>
+                        Excel admite una variedad de operadores matemáticos que puedes utilizar en tus fórmulas, como la suma (+), la resta (-), la 
+                        multiplicación (*) y la división (/). Estos operadores te permiten realizar cálculos simples y complejos en tus hojas de cálculo.
+                    </p>
+
+                    <iframe class="video-player" src="https://www.youtube.com/embed/fcgfP3mbTrU?si=gO5sEn6cW3FmGUxD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    <h3>Funciones básicas: SUMA, PROMEDIO, MÁXIMO, MÍNIMO, CONTAR, etc.</h3>
+                    <p>
+                        Excel incluye una amplia variedad de funciones predefinidas que te permiten realizar cálculos y análisis de datos de manera rápida y sencilla. 
+                        Algunas de las funciones más comunes incluyen SUMA, PROMEDIO, MÁXIMO, MÍNIMO, CONTAR, entre otras. Estas funciones te ayudarán a realizar 
+                        cálculos complejos y a obtener información útil de tus datos.
+                    </p>
+                        <ul>
+                            <li>SUMA(número1, número2, ..., númeroN): Suma todos los números dados como argumentos.</li>
+                            <li>PROMEDIO(número1, número2, ..., númeroN): Calcula el promedio de los números dados.</li>
+                            <li>CONTAR(rango): Cuenta el número de celdas no vacías en un rango.</li>
+                            <li>MÁXIMO(número1, número2, ..., númeroN): Devuelve el valor máximo de un rango de celdas.</li>
+                            <li>MÍNIMO(número1, número2, ..., númeroN): Devuelve el valor mínimo de un rango de celdas.</li>
+                            <li>CONTARA(rango): Cuenta el número de celdas no vacías que contienen valores numéricos en un rango.</li>
+                            <li>SI(condición, valor_si_verdadero, valor_si_falso): Evalúa una condición y devuelve un valor si es verdadera y otro si es falsa.</li>
+                            <li>INDICE(rango, fila, columna): Devuelve el valor de una celda en un rango, dadas las coordenadas de fila y columna.</li>
+                            <li>COINCIDIR(valor_buscado, rango, tipo_de_coincidencia): Devuelve la posición relativa de un valor en un rango.</li>
+                            <li>CONCATENAR(texto1, texto2, ...): Combina varios textos en uno solo.</li>
+                        </ul>
+                    <p>
+                        Dichas funciones se introducen en:
+                    </p>
+                    <iframe class="video-player" src="https://www.youtube.com/embed/fu8hamz9GO8?si=XhzAZUu_b1SBs8wO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>       
+                    <div class="next-tab__container">
+                        <button class="next-tab" onclick="activarRadio('tab4')">Siguiente sección (Formato de celdas)</button>
+                    </div>
+                </section>
+            </div>
+            
+            <!--Fourth section-->
+            <input type="radio" class="tabs__radio" name="tabs-example" id="tab4">
+            <label for="tab4" class="tabs__label">Formato de celdas</label>
+            <div class="tabs__content">
+                <section class="excel-section">
+                    <h2>Formato de Celdas</h2>
+                    <p>
+                        El formato de celdas en Excel te permite personalizar la apariencia de tus datos, haciéndolos más legibles y atractivos. 
+                        A continuación, te presentamos algunas de las opciones de formato de celdas más comunes que puedes utilizar en tus hojas de cálculo.
+                    </p>
+                    
+                    <h3>Cambiar el tipo de letra, tamaño y color.</h3>
+                    <p>
+                        Puedes cambiar el tipo de letra, el tamaño y el color de tus datos para resaltar la información más importante y hacer que tus 
+                        hojas de cálculo sean más atractivas y fáciles de leer. Para cambiar el formato de fuente, selecciona las celdas que deseas 
+                        modificar y utiliza las opciones de formato de fuente en la pestaña de Inicio.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/font-type-excel.png" alt="type-interface">
+                    </div>
+                    
+                    <h3>Alineación de texto y números.</h3>
+                    <p>
+                        Puedes alinear el texto y los números en tus celdas para mejorar la legibilidad y la apariencia de tus datos. Excel te permite 
+                        alinear el contenido de tus celdas en la parte superior, en el centro o en la parte inferior, así como a la izquierda, en el centro 
+                        o a la derecha. También puedes ajustar la orientación del texto y el espaciado entre líneas.
+                    </p>
+                    <div>
+                        <img class="excel-image menu-image" src="./../../images/font-align-excel.png" alt="align-interface">
+                    </div>
+                    
+                    <h3>Formato de números (moneda, porcentaje, fecha, etc.).</h3>
+                    <p>
+                        Excel te permite aplicar formatos especiales a tus números, como moneda, porcentaje, fecha, hora y texto. Estos formatos te permiten 
+                        presentar tus datos de manera clara y concisa, facilitando la interpretación de la información. Para aplicar un formato de número, 
+                        selecciona las celdas que deseas formatear y utiliza las opciones de formato de número en la pestaña de Inicio.     
+                    </p>
+                    <iframe class="video-player" src="https://www.youtube.com/embed/RgJyBj-sPUw?si=HxNwygcR_uTJw2Kc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="next-tab__container">
+                        <button class="next-tab" onclick="activarRadio('tab5')">Siguiente sección (Gestión de datos)</button>
+                    </div>
+                </section>
+            </div>
+            
+            <!--Fifth section-->
+            <input type="radio" class="tabs__radio" name="tabs-example" id="tab5">
+            <label for="tab5" class="tabs__label">Gestión de datos</label>
+            <div class="tabs__content">
+                <section class="excel-section">
+                    <h2>Gestión de Datos</h2>
+                    <p>  
+                        Excel te permite gestionar tus datos de manera eficiente, facilitando la organización, el análisis y la presentación de la información. 
+                        A continuación, te presentamos algunas de las funciones más útiles de Excel para la gestión de datos.   
+                    </p>
+
+                    <h3>Copiar y pegar datos.</h3>
+                    <p>     
+                        Puedes copiar y pegar tus datos en Excel para duplicarlos o moverlos a otra ubicación. Para copiar datos, selecciona el rango de celdas 
+                        que deseas copiar y utiliza las opciones de copiado en la pestaña de Inicio <a href="#copy-image"><span>(ver flecha de la imagen)</span></a>. Para pegar datos, selecciona la celda de destino y utiliza 
+                        las opciones de pegado en la pestaña de Inicio. Puedes pegar tus datos como valores, fórmulas, formatos o enlaces. Tambien puedes utilizar la combinación de teclas Ctrl+C para copiar y Ctrl+V para pegar 
+                        (en Windows) o Command + C para copiar y Command + V para pegar (en Mac).
+                    </p>
+                    <div>
+                        <img id="copy-image" class="excel-image menu-image" src="./../../images/copy-paste-excel.png" alt="operators-interface">
+                    </div>
+
+                    <h3>Insertar, eliminar y mover filas y columnas.</h3>
+                    <p>    
+                        Puedes insertar, eliminar y mover filas y columnas en tus hojas de cálculo para organizar tus datos de la manera que desees. 
+                        Para insertar una fila o columna, selecciona la fila o columna adyacente a la que deseas insertar y utiliza las opciones de 
+                        inserción en la pestaña de Inicio. Para eliminar una fila o columna, selecciona la fila o columna que deseas eliminar y utiliza 
+                        las opciones de eliminación en la pestaña de Inicio. Para mover una fila o columna, selecciona la fila o columna que deseas mover 
+                        y arrástrala a la nueva ubicación. 
+                    </p>
+                    <iframe class="video-player" src="https://www.youtube.com/embed/rWDZU6fKQGU?si=8eLzQtoUno_Zc0MK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <h3>Ordenar y filtrar datos.</h3>
+                    <p>   
+                        Puedes ordenar y filtrar tus datos en Excel para organizarlos y analizarlos de manera eficiente. Para ordenar tus datos, selecciona 
+                        el rango de celdas que deseas ordenar y utiliza las opciones de ordenación en la pestaña de Inicio. Para filtrar tus datos, selecciona 
+                        el rango de celdas que deseas filtrar y utiliza las opciones de filtrado en la pestaña de Datos. Puedes filtrar tus datos por valores, 
+                        colores, iconos y criterios personalizados.  
+                    </p>
+                    <iframe class="video-player" src="https://www.youtube.com/embed/_pWDSNkHvUw?si=-3HtMi6tjS9R7Eta" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="next-tab__container">
+                        <button class="next-tab" onclick="activarRadio('tab6')">Siguiente sección (Gráficos)</button>
+                    </div>
+                </section>
+            </div>
+            
+            <!--Sixth section-->
+            <input type="radio" class="tabs__radio" name="tabs-example" id="tab6">
+            <label for="tab6" class="tabs__label">Gráficos</label>
+            <div class="tabs__content">
+                <section class="excel-section">
+                    <h2>Gráficos Básicos</h2>
+                    <p>     
+                        Los gráficos en Excel te permiten visualizar tus datos de manera clara y concisa, facilitando la interpretación y el análisis de la información. 
+                        A continuación, te presentamos algunas de las funciones más útiles de Excel para la creación y personalización de gráficos, pero antes de nada,
+                        veamos desde donde podemos importar gráficos.
+                    </p>
+
+                    <h3>Insertar un gráfico en una hoja de cálculo.</h3>
+                    <p> 
+                        Puedes insertar un gráfico en una hoja de cálculo de Excel para visualizar tus datos de manera clara y concisa. Para insertar un gráfico, 
+                        selecciona el rango de celdas que deseas graficar y utiliza las opciones de inserción de gráfico en la pestaña de Insertar. Puedes elegir 
+                        entre varios tipos de gráficos, como columnas, líneas, pastel, barras, áreas, dispersión y más.    
+                    </p>
+                    <iframe class="video-player" src="https://www.youtube.com/embed/rSvWBtga79o?si=Oo4d72C_WwhU64R_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </section>
+            </div>
+            <label class="extra-label"></label>
+        </div>        
+    </main>
+    <footer>
+        Copyright &copy; FHiC 23-24 - Puente Digital
+    </footer>
+</body>
+</html>
